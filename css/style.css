@@ -556,8 +556,8 @@ a {
     padding-left: 1.2em;
   }
   #container .toc-article a {
-    color: #767676;
-    font-size: 16px;
+    color: #fefcfc;
+    font-size: 15px;
   }
   #container .scroll {
     bottom: 0;
@@ -4701,20 +4701,20 @@ pre .link_url {
   border: 1px solid #999;
   -webkit-border-radius: 10px;
   border-radius: 10px;
-  background: #aaa;
+  background: #4caf50;
   display: inline-block;
   margin-right: 10px;
 }
 #viewer-box .viewer-box-l .viewer-div {
   border-bottom: 1px dotted #666;
-  padding-bottom: 13px;
-  line-height: 20px;
+  padding-bottom: 10px;
+  line-height: 30px;
 }
 #viewer-box .viewer-box-l .viewer-div:last-child {
   border-bottom: none;
 }
 #viewer-box .viewer-box-l .viewer-div .switch-friends-link {
-  line-height: 20px;
+  line-height: 40px;
 }
 #viewer-box .viewer-box-r {
   background: rgba(0,0,0,0);
