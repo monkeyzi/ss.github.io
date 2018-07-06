@@ -567,9 +567,9 @@ a {
   }
   #container .hide-labels {
     position: fixed;
-    left: 42px;
-    top: 78px;
-    color: #999;
+    left: 24px;
+    top: 341px;
+    color: #d4bcbc;
     opacity: 0.6;
   }
   #container .hide-labels:hover {
