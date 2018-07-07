@@ -3232,15 +3232,8 @@ a.gitment-editor-footer-tip:hover {
   visibility: hidden;
 }
 #article-nav {
-  -margin: 80px 0 30px 0;
-  -padding-bottom: 10px;
-  display: table;
-  width: 100%;
-  height: 2.5em;
-  margin: 1em auto;
-  font-size: 1rem;
-  background: #4085ae;
-  line-height: 2.5em;
+  margin: 80px 0 30px 0;
+  padding-bottom: 10px;
 }
 #article-nav .article-nav-link-wrap {
   margin: 0px 30px 0px 30px;
@@ -3264,7 +3257,7 @@ a.gitment-editor-footer-tip:hover {
   height: 15px;
   display: inline-block;
   text-align: center;
-  line-height: 15px;
+  -line-height: 15px;
   -webkit-transition: background 0.3s;
   -moz-transition: background 0.3s;
   -ms-transition: background 0.3s;
