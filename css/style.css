@@ -3232,8 +3232,15 @@ a.gitment-editor-footer-tip:hover {
   visibility: hidden;
 }
 #article-nav {
-  margin: 80px 0 30px 0;
-  padding-bottom: 10px;
+  -margin: 80px 0 30px 0;
+  -padding-bottom: 10px;
+  display: table;
+  width: 100%;
+  height: 2.5em;
+  margin: 1em auto;
+  font-size: 1rem;
+  background: #4085ae;
+  line-height: 2.5em;
 }
 #article-nav .article-nav-link-wrap {
   margin: 0px 30px 0px 30px;
@@ -3243,30 +3250,32 @@ a.gitment-editor-footer-tip:hover {
 #article-nav .article-nav-link-wrap .article-nav-title {
   display: inline-block;
   font-size: 1rem;
-  color: #999;
+  color: #fff;
   -webkit-transition: color 0.3s;
   -moz-transition: color 0.3s;
   -ms-transition: color 0.3s;
   transition: color 0.3s;
 }
 #article-nav .article-nav-link-wrap strong {
-  background: #999;
-  color: #fff;
+  background: #fff;
+  color: #4085ae;
   border-radius: 100%;
   width: 15px;
   height: 15px;
   display: inline-block;
   text-align: center;
+  line-height: 15px;
   -webkit-transition: background 0.3s;
   -moz-transition: background 0.3s;
   -ms-transition: background 0.3s;
   transition: background 0.3s;
 }
 #article-nav .article-nav-link-wrap:hover strong {
-  background: #248eb7;
+  background: #cddc39;
+  color: #fff;
 }
 #article-nav .article-nav-link-wrap:hover .article-nav-title {
-  color: #fff;
+  color: #cddc39;
 }
 #article-nav #article-nav-older {
   float: right;
