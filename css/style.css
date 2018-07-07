@@ -3299,7 +3299,7 @@ a.gitment-editor-footer-tip:hover {
   margin-left: 0em;
   -margin: 20px 10px 10px 10px;
   background: #3f3f3f;
-  -border: 1px solid #080808;
+  border-right: 1px solid #392d2d;
   border-radius: 3px;
   overflow: auto;
   -webkit-border-radius: 0;
