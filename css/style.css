@@ -3030,7 +3030,7 @@ a.gitment-editor-footer-tip:hover {
   color: #c8c8c8;
 }
 .article-title {
-  color: #999;
+  color: #e6dada;
   margin-left: 0px;
   font-weight: initial;
   line-height: 35px;
@@ -3199,7 +3199,7 @@ a.gitment-editor-footer-tip:hover {
   z-index: 1;
 }
 .article-meta time {
-  color: #aaa;
+  color: #e6d6d6;
 }
 .article-meta time:before {
   color: #999;
@@ -3226,7 +3226,7 @@ a.gitment-editor-footer-tip:hover {
   transition: background 0.3s;
 }
 .article-more-link a:hover {
-  background: #3f3f3f;
+  background: #8bc34a;
 }
 .article-more-link a.hidden {
   visibility: hidden;
@@ -3319,7 +3319,8 @@ a.gitment-editor-footer-tip:hover {
   line-height: 1.65em;
 }
 #toc a {
-  color: #999;
+  color: #37c8c2;
+  font-size: 14px;
 }
 #toc a:visited {
   color: #ffeb3b;
@@ -3679,14 +3680,14 @@ a.gitment-editor-footer-tip:hover {
   font-family: Menlo, Consolas, "Source Code Pro", Inconsolata, Monaco, monospace;
 }
 .article-entry blockquote {
-  background-color: #555;
+  background-color: #242829;
   padding: 10px 15px;
   word-break: break-word;
   margin: 10px 0px;
-  border-left: 4px solid #2f2f2f;
-  border-top: 1px dashed #000;
-  border-right: 1px dashed #000;
-  border-bottom: 1px dashed #000;
+  border-left: 4px solid #4caf50;
+  border-top: 1px solid #000;
+  border-right: 1px solid #000;
+  border-bottom: 1px solid #000;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
