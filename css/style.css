@@ -4034,6 +4034,7 @@ pre .link_url {
 }
 .footer-right {
   float: right;
+  display: none;
 }
 .bdshare-button-style2-24 {
   width: 330px;
