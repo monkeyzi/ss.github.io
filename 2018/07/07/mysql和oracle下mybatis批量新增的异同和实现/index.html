@@ -6,14 +6,14 @@
   <title>mysql和oracle下mybatis批量新增的异同和实现 | Monkeyzi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="mysql和oracle下mybatis实现批量新增的思路是一样的，通过mapper接口向xml中传参没有区别，主要不同主要是xml中的实现细节；">
-<meta name="keywords" content="mytatis批量新增">
+<meta name="keywords" content="mytatis,oracle,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql和oracle下mybatis批量新增的异同和实现">
 <meta property="og:url" content="https://monkeyzi.github.io/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/index.html">
 <meta property="og:site_name" content="Monkeyzi">
 <meta property="og:description" content="mysql和oracle下mybatis实现批量新增的思路是一样的，通过mapper接口向xml中传参没有区别，主要不同主要是xml中的实现细节；">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-07-07T16:29:26.596Z">
+<meta property="og:updated_time" content="2018-07-08T03:16:22.082Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql和oracle下mybatis批量新增的异同和实现">
 <meta name="twitter:description" content="mysql和oracle下mybatis实现批量新增的思路是一样的，通过mapper接口向xml中传参没有区别，主要不同主要是xml中的实现细节；">
@@ -156,7 +156,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/mytatis/" style="font-size: 10px;">mytatis</a> <a href="/tags/mytatis批量新增/" style="font-size: 10px;">mytatis批量新增</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
+                        <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/mytatis/" style="font-size: 10px;">mytatis</a> <a href="/tags/oracle/" style="font-size: 10px;">oracle</a>
                     </div>
                 </section>
                 
@@ -268,13 +268,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/mytatis/">mytatis</a><a class="article-category-link" href="/categories/mytatis/mysql/">mysql</a><a class="article-category-link" href="/categories/mytatis/mysql/oracle/">oracle</a>
+    <a class="article-category-link" href="/categories/JAVA后端-术业专攻/">JAVA后端-术业专攻</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mytatis批量新增/">mytatis批量新增</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/">mysql</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mytatis/">mytatis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oracle/">oracle</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -291,20 +291,25 @@
 <blockquote>
 <p>注意：之所以没有生成Getter()和Setter(),主要是使用了lombok,直接在类名上使用@Getter和@Setter注解就行，编译后的文件，就和平时的生成的getter和setter方法一样</p>
 </blockquote>
-<h3 id="批量新增中foreach标签的属性"><a href="#批量新增中foreach标签的属性" class="headerlink" title="批量新增中foreach标签的属性"></a>批量新增中foreach标签的属性</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">collection:指定要遍历的集合：</span><br><span class="line">list类型的参数会特殊处理封装在map中，map的key就叫list</span><br><span class="line">item:将当前遍历出的元素赋值给指定的变量</span><br><span class="line">separator:每个元素之间的分隔符</span><br><span class="line">open:遍历出所有结果拼接一个开始的字符</span><br><span class="line">close:遍历出所有结果拼接一个结束的字符</span><br><span class="line">index:索引。遍历list的时候是index就是索引，item就是当前值</span><br><span class="line">遍历map的时候index表示的就是map的key，item就是map的值</span><br><span class="line">#&#123;item.变量名&#125;就能取出变量的值也就是当前遍历出的元素</span><br></pre></td></tr></table></figure>
+<h3 id="批量操作中foreach标签的属性"><a href="#批量操作中foreach标签的属性" class="headerlink" title="批量操作中foreach标签的属性"></a>批量操作中foreach标签的属性</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">collection:指定要遍历的集合：</span><br><span class="line">list类型的参数会特殊处理封装在map中，map的key就叫list</span><br><span class="line">item:将当前遍历出的元素赋值给指定的变量</span><br><span class="line">separator:每个元素之间的分隔符</span><br><span class="line">open:遍历出所有结果拼接一个开始的字符</span><br><span class="line">close:遍历出所有结果拼接一个结束的字符</span><br><span class="line">index:索引。遍历list的时候是index就是索引，item就是当前值</span><br><span class="line">遍历map的时候index表示的就是map的key，item就是map的值</span><br><span class="line">#&#123;item.变量名&#125;就能取出变量的值也就是当前遍历出的元素</span><br></pre></td></tr></table></figure>
 <h2 id="mysql下的mybatis批量新增"><a href="#mysql下的mybatis批量新增" class="headerlink" title="mysql下的mybatis批量新增"></a>mysql下的mybatis批量新增</h2><h3 id="Mapper接口文件"><a href="#Mapper接口文件" class="headerlink" title="Mapper接口文件"></a>Mapper接口文件</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Mapper</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">BookMapper</span> </span>&#123;</span><br><span class="line">    <span class="comment">//单个参数list的批量新增mapper</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertBatch</span><span class="params">(List&lt;Book&gt; list1)</span></span>;</span><br><span class="line">    <span class="comment">//单个参数array的批量新增mapper</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertBatchArray</span><span class="params">(Book[] array1)</span></span>;</span><br><span class="line">    <span class="comment">//传入map</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">insertBatchMap</span><span class="params">(@Param(<span class="string">"bookList"</span>)</span>List&lt;Book&gt; bookList)</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="实现一-collection-”list”"><a href="#实现一-collection-”list”" class="headerlink" title="实现一:collection=”list”"></a>实现一:collection=”list”</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=<span class="string">"1.0"</span> encoding=<span class="string">"UTF-8"</span>?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper PUBLIC <span class="string">"-//mybatis.org//DTD Mapper 3.0//EN"</span></span><br><span class="line">        <span class="string">"http://mybatis.org/dtd/mybatis-3-mapper.dtd"</span> &gt;</span><br><span class="line">&lt;mapper namespace=<span class="string">"com.guoguo.funapp.dao.BookMapper"</span> &gt;</span><br><span class="line">      &lt;insert id=<span class="string">"insertBatch"</span> parameterType=<span class="string">"list"</span> useGeneratedKeys=<span class="string">"true"</span>&gt;</span><br><span class="line">          <span class="function">INSERT INTO <span class="title">book</span><span class="params">(id,book_name,author,price,create_time)</span></span></span><br><span class="line"><span class="function">          VALUES</span></span><br><span class="line"><span class="function">          &lt;foreach collection</span>=<span class="string">"list"</span> item=<span class="string">"book"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">              (#&#123;book.id,jdbcType=INTEGER&#125;,#&#123;book.bookName,jdbcType=VARCHAR&#125;,</span><br><span class="line">              #&#123;book.author,jdbcType=VARCHAR&#125;,#&#123;book.price,jdbcType=VARCHAR&#125;,now())</span><br><span class="line">          &lt;/foreach&gt;</span><br><span class="line">      &lt;/insert&gt;</span><br><span class="line">&lt;/mapper&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>注意：这里collection=”list”,和mapper接口传递的参数名可以不同，但是这里必须是list</p>
+<p>注意：这里collection=”list”,和mapper接口传递的参数名可以不同，但是这里必须是list;同时parameterType=”list”可以不用写</p>
 </blockquote>
 <h3 id="实现二-collection-”array”"><a href="#实现二-collection-”array”" class="headerlink" title="实现二:collection=”array”"></a>实现二:collection=”array”</h3><p>·<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"insertBatchArray"</span> useGeneratedKeys=<span class="string">"true"</span>&gt;</span><br><span class="line">     <span class="function">INSERT INTO <span class="title">book</span><span class="params">(id,book_name,author,price,create_time)</span></span></span><br><span class="line"><span class="function">     VALUES</span></span><br><span class="line"><span class="function">     &lt;foreach collection</span>=<span class="string">"array"</span> item=<span class="string">"book"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">         (#&#123;book.id,jdbcType=INTEGER&#125;,#&#123;book.bookName,jdbcType=VARCHAR&#125;,</span><br><span class="line">         #&#123;book.author,jdbcType=VARCHAR&#125;,#&#123;book.price,jdbcType=VARCHAR&#125;,now())</span><br><span class="line">     &lt;/foreach&gt;</span><br><span class="line"> &lt;/insert&gt;</span><br></pre></td></tr></table></figure></p>
 <blockquote>
-<p>注意：这里collection=”array”,和mapper接口传递的参数名可以不同，但是这里必须是array</p>
+<p>注意：这里collection=”array”,和mapper接口传递的参数名可以不同，但是这里必须是array；</p>
 </blockquote>
 <h3 id="实现三-collection-”自定义参数名”"><a href="#实现三-collection-”自定义参数名”" class="headerlink" title="实现三:collection=”自定义参数名”"></a>实现三:collection=”自定义参数名”</h3><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;insert id=<span class="string">"insertBatchMap"</span> useGeneratedKeys=<span class="string">"true"</span> parameterType=<span class="string">"map"</span>&gt;</span><br><span class="line">        <span class="function">INSERT INTO <span class="title">book</span><span class="params">(id,book_name,author,price,create_time)</span></span></span><br><span class="line"><span class="function">        VALUES</span></span><br><span class="line"><span class="function">        &lt;foreach collection</span>=<span class="string">"bookList"</span> item=<span class="string">"book"</span> separator=<span class="string">","</span>&gt;</span><br><span class="line">            (#&#123;book.id,jdbcType=INTEGER&#125;,#&#123;book.bookName,jdbcType=VARCHAR&#125;,</span><br><span class="line">            #&#123;book.author,jdbcType=VARCHAR&#125;,#&#123;book.price,jdbcType=VARCHAR&#125;,now())</span><br><span class="line">        &lt;/foreach&gt;</span><br><span class="line">&lt;/insert&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>注意：这里collection=”booklist”,和mapper接口传递的参数名要一致；同时注意parameterType参数类别，多参数使用map的情况</p>
 </blockquote>
+<h2 id="oracle下的批量新增xml"><a href="#oracle下的批量新增xml" class="headerlink" title="oracle下的批量新增xml"></a>oracle下的批量新增xml</h2><blockquote>
+<p>mybatis在oracle中批量插入数据时，单次批量大小有限制，批量插入时，单次批量过大，也会影响插入性能。所以写法也需要对应的限制。</p>
+</blockquote>
+<h3 id="oracle下mybatis批量新增一"><a href="#oracle下mybatis批量新增一" class="headerlink" title="oracle下mybatis批量新增一"></a>oracle下mybatis批量新增一</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"addBatch"</span> <span class="attr">parameterType</span>=<span class="string">"java.util.List"</span>&gt;</span></span><br><span class="line">        BEGIN</span><br><span class="line">        <span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">            insert into book</span><br><span class="line">            (id,book_name,author,price,create_time)</span><br><span class="line">            VALUES</span><br><span class="line">            (</span><br><span class="line">            seq.Nextval,#&#123;item.bookName,jdbcType=INTEGER&#125;,#&#123;item.author,jdbcType=VARCHAR&#125;,</span><br><span class="line">            #&#123;item.price,jdbcType=DATE&#125;,sysdate);</span><br><span class="line">        <span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line">        COMMIT;</span><br><span class="line">        END;</span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="oracle下mybatis批量新增二"><a href="#oracle下mybatis批量新增二" class="headerlink" title="oracle下mybatis批量新增二"></a>oracle下mybatis批量新增二</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">insert</span> <span class="attr">id</span>=<span class="string">"addBatch"</span>  <span class="attr">parameterType</span>=<span class="string">"java.util.List"</span>&gt;</span></span><br><span class="line">	INSERT INTO book (</span><br><span class="line">	id,</span><br><span class="line">	book_name,</span><br><span class="line">	author,</span><br><span class="line">	price,</span><br><span class="line">	create_time</span><br><span class="line">	)</span><br><span class="line">	<span class="tag">&lt;<span class="name">foreach</span> <span class="attr">collection</span>=<span class="string">"list"</span> <span class="attr">item</span>=<span class="string">"item"</span> <span class="attr">index</span>=<span class="string">"index"</span> <span class="attr">separator</span>=<span class="string">"union all"</span> &gt;</span></span><br><span class="line">		select #&#123;item.id,jdbcType=VARCHAR&#125;, #&#123;item.bookName,jdbcType=VARCHAR&#125;, #&#123;item.author,jdbcType=VARCHAR&#125;, #&#123;item.price,jdbcType=VARCHAR&#125;,sysdate from dual</span><br><span class="line">	<span class="tag">&lt;/<span class="name">foreach</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">insert</span>&gt;</span></span><br></pre></td></tr></table></figure>
 
       
       
@@ -363,7 +368,7 @@
         <p><span>本文标题:</span><a href="/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/">mysql和oracle下mybatis批量新增的异同和实现</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Dream Gao 的个人博客">Dream Gao</a></p>
         <p><span>发布时间:</span>2018年07月07日 - 20时50分</p>
-        <p><span>最后更新:</span>2018年07月08日 - 00时29分</p>
+        <p><span>最后更新:</span>2018年07月08日 - 11时16分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/" title="mysql和oracle下mybatis批量新增的异同和实现">https://monkeyzi.github.io/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/</a>
             <span class="copy-path" data-clipboard-text="原文: https://monkeyzi.github.io/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/　　作者: Dream Gao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -380,8 +385,8 @@
 <nav id="article-nav">
   
   
-    <a href="/2018/07/05/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">测试文章</div>
+    <a href="/2018/07/05/mybatis批量查询/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mybatis批量查询</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -392,7 +397,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础工作"><span class="toc-number">1.</span> <span class="toc-text">基础工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Book对象"><span class="toc-number">1.1.</span> <span class="toc-text">Book对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量新增中foreach标签的属性"><span class="toc-number">1.2.</span> <span class="toc-text">批量新增中foreach标签的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql下的mybatis批量新增"><span class="toc-number">2.</span> <span class="toc-text">mysql下的mybatis批量新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapper接口文件"><span class="toc-number">2.1.</span> <span class="toc-text">Mapper接口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现一-collection-”list”"><span class="toc-number">2.2.</span> <span class="toc-text">实现一:collection=”list”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现二-collection-”array”"><span class="toc-number">2.3.</span> <span class="toc-text">实现二:collection=”array”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现三-collection-”自定义参数名”"><span class="toc-number">2.4.</span> <span class="toc-text">实现三:collection=”自定义参数名”</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础工作"><span class="toc-number">1.</span> <span class="toc-text">基础工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Book对象"><span class="toc-number">1.1.</span> <span class="toc-text">Book对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#批量操作中foreach标签的属性"><span class="toc-number">1.2.</span> <span class="toc-text">批量操作中foreach标签的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql下的mybatis批量新增"><span class="toc-number">2.</span> <span class="toc-text">mysql下的mybatis批量新增</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Mapper接口文件"><span class="toc-number">2.1.</span> <span class="toc-text">Mapper接口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现一-collection-”list”"><span class="toc-number">2.2.</span> <span class="toc-text">实现一:collection=”list”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现二-collection-”array”"><span class="toc-number">2.3.</span> <span class="toc-text">实现二:collection=”array”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实现三-collection-”自定义参数名”"><span class="toc-number">2.4.</span> <span class="toc-text">实现三:collection=”自定义参数名”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#oracle下的批量新增xml"><span class="toc-number">3.</span> <span class="toc-text">oracle下的批量新增xml</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#oracle下mybatis批量新增一"><span class="toc-number">3.1.</span> <span class="toc-text">oracle下mybatis批量新增一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#oracle下mybatis批量新增二"><span class="toc-number">3.2.</span> <span class="toc-text">oracle下mybatis批量新增二</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -447,12 +452,12 @@
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2018/07/05/hello-world/" title="下一篇: 测试文章">
+            <a href="/2018/07/05/mybatis批量查询/" title="下一篇: mybatis批量查询">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/">mysql和oracle下mybatis批量新增的异同和实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/hello-world/">测试文章</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/mysql和oracle下mybatis批量新增的异同和实现/">mysql和oracle下mybatis批量新增的异同和实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/mybatis批量查询/">mybatis批量查询</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
