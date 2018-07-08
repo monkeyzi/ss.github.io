@@ -3686,7 +3686,7 @@ a.gitment-editor-footer-tip:hover {
   padding: 10px 15px;
   word-break: break-word;
   margin: 10px 0px;
-  border-left: 6px solid #4caf50;
+  border-left: 6px dashed #4caf50;
   border-top: 1px solid #4caf50;
   border-right: 1px solid #4caf50;
   border-bottom: 1px solid #4caf50;
