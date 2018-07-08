@@ -503,6 +503,7 @@ a {
   #container #footer .footer-right {
     float: initial;
     margin-bottom: 10px;
+    display: none;
   }
   #container #container .visit {
     margin-top: 1em;
