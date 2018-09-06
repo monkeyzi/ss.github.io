@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Mybatis字段映射-驼峰式命名 | Monkeyzi</title>
+  <title>java8--List&lt;String&gt;和逗号分割的字符串相互转换 | Monkeyzi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="mybatis字段映射的核心就是：1.数据库中的列名怎么和对象中的字段对应起来。2.数据库中的列的类型怎么转换到合适的Java类型，不引起转换失败">
-<meta name="keywords" content="mybatis">
+  <meta name="description" content="利用java8将List转为以逗号分割的字符串">
+<meta name="keywords" content="JAVA8">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mybatis字段映射-驼峰式命名">
-<meta property="og:url" content="https://monkeyzi.github.io/2018/07/04/Mybatis字段映射-驼峰式命名/index.html">
+<meta property="og:title" content="java8--List&lt;String&gt;和逗号分割的字符串相互转换">
+<meta property="og:url" content="https://monkeyzi.github.io/2018/08/06/java8-List和逗号分割的字符串相互转换/index.html">
 <meta property="og:site_name" content="Monkeyzi">
-<meta property="og:description" content="mybatis字段映射的核心就是：1.数据库中的列名怎么和对象中的字段对应起来。2.数据库中的列的类型怎么转换到合适的Java类型，不引起转换失败">
+<meta property="og:description" content="利用java8将List转为以逗号分割的字符串">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-06T13:05:21.012Z">
+<meta property="og:updated_time" content="2018-09-06T13:47:05.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mybatis字段映射-驼峰式命名">
-<meta name="twitter:description" content="mybatis字段映射的核心就是：1.数据库中的列名怎么和对象中的字段对应起来。2.数据库中的列的类型怎么转换到合适的Java类型，不引起转换失败">
+<meta name="twitter:title" content="java8--List&lt;String&gt;和逗号分割的字符串相互转换">
+<meta name="twitter:description" content="利用java8将List转为以逗号分割的字符串">
   
     <link rel="alternative" href="/atom.xml" title="Monkeyzi" type="application/atom+xml">
   
@@ -230,11 +230,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-Mybatis字段映射-驼峰式命名" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-java8-List和逗号分割的字符串相互转换" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/07/04/Mybatis字段映射-驼峰式命名/" class="article-date">
-      <time datetime="2018-07-04T15:06:21.000Z" itemprop="datePublished">2018-07-04</time>
+      <a href="/2018/08/06/java8-List和逗号分割的字符串相互转换/" class="article-date">
+      <time datetime="2018-08-06T13:03:31.000Z" itemprop="datePublished">2018-08-06</time>
 </a>
     </div>
   
@@ -247,7 +247,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Mybatis字段映射-驼峰式命名
+      java8--List&lt;String&gt;和逗号分割的字符串相互转换
     </h1>
   
 
@@ -256,13 +256,13 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/JAVA后端-数据库/">JAVA后端-数据库</a>
+    <a class="article-category-link" href="/categories/JAVA后端-实战/">JAVA后端-实战</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mybatis/">mybatis</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JAVA8/">JAVA8</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -273,17 +273,14 @@
       
           
         <blockquote>
-<p>mybatis字段映射的核心就是：1.数据库中的列名怎么和对象中的字段对应起来。2.数据库中的列的类型怎么转换到合适的Java类型，不引起转换失败<br><a id="more"></a></p>
+<p>利用java8将List<String>转为以逗号分割的字符串<br><a id="more"></a></p>
 </blockquote>
-<h2 id="mybatis字段映射"><a href="#mybatis字段映射" class="headerlink" title="mybatis字段映射"></a>mybatis字段映射</h2><p>首先是日常PO(Persistant Object) Book对象,里面有五个字段。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Getter</span></span><br><span class="line"><span class="meta">@Setter</span></span><br><span class="line"><span class="meta">@ToString</span></span><br><span class="line"><span class="meta">@Alias</span>(<span class="string">"book"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> Integer id;</span><br><span class="line">    <span class="keyword">private</span> String bookName;</span><br><span class="line">    <span class="keyword">private</span> String author;</span><br><span class="line">    <span class="keyword">private</span> String price;</span><br><span class="line">    <span class="keyword">private</span> Date   createTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>其次看一下数据库中表的字段<br><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; desc book;</span><br><span class="line">+<span class="comment">-------------+--------------+------+-----+---------+----------------+</span></span><br><span class="line">| Field       | Type         | Null | Key | Default | Extra          |</span><br><span class="line">+<span class="comment">-------------+--------------+------+-----+---------+----------------+</span></span><br><span class="line">| id          | int(11)      | NO   | PRI | NULL    | auto_increment |</span><br><span class="line">| book_name   | varchar(255) | NO   |     | NULL    |                |</span><br><span class="line">| author      | varchar(255) | YES  |     | NULL    |                |</span><br><span class="line">| price       | varchar(32)  | YES  |     | NULL    |                |</span><br><span class="line">| create_time | datetime     | NO   |     | NULL    |                |</span><br><span class="line">+<span class="comment">-------------+--------------+------+-----+---------+----------------+</span></span><br></pre></td></tr></table></figure></p>
-<p>可以看出我们在po中定义的字段名属于驼峰式的，而mysql数据库中定义的是带有下划线的；两者不一致，是如何映射上的：</p>
+<h2 id="List转string"><a href="#List转string" class="headerlink" title="List转string"></a>List<String>转string</h2><h3 id="方式1：String-join-函数"><a href="#方式1：String-join-函数" class="headerlink" title="方式1：String.join()函数"></a>方式1：String.join()函数</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list=Arrays.asList(<span class="string">"java8"</span>,<span class="string">"斗破苍穹"</span>,<span class="string">"大主宰"</span>,<span class="string">"Md5"</span>);</span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test1</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String str=String.join(<span class="string">","</span>,list);</span><br><span class="line">    System.out.println(str); <span class="comment">//java8,斗破苍穹,大主宰,Md5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="方式2：流的方式"><a href="#方式2：流的方式" class="headerlink" title="方式2：流的方式"></a>方式2：流的方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test2</span><span class="params">()</span></span>&#123;</span><br><span class="line">    String str=list.stream().collect(Collectors.joining(<span class="string">","</span>));</span><br><span class="line">    System.out.println(str);<span class="comment">////java8,斗破苍穹,大主宰,Md5</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>我们一般主要用下面三种手段：<br>1：驼峰式命名开关，或者不开，数据库列和字段名全一致。<br>2：select时指定AS,取别名。<br>3：使用resultMap。</p>
+<p>利用java8将以逗号分割的字符串转为List<String></p>
 </blockquote>
-<h2 id="项目中的应用配置-驼峰式"><a href="#项目中的应用配置-驼峰式" class="headerlink" title="项目中的应用配置(驼峰式)"></a>项目中的应用配置(驼峰式)</h2><h3 id="mybatis配置文件中添加配置"><a href="#mybatis配置文件中添加配置" class="headerlink" title="mybatis配置文件中添加配置"></a>mybatis配置文件中添加配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="UTF-8" ?&gt;  </span><br><span class="line"><span class="meta">&lt;!DOCTYPE configuration  </span></span><br><span class="line"><span class="meta">PUBLIC "-//mybatis.org//DTD Config 3.0//EN"  </span></span><br><span class="line"><span class="meta">"http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;</span>  </span><br><span class="line"><span class="tag">&lt;<span class="name">configuration</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">settings</span>&gt;</span>  </span><br><span class="line">        <span class="tag">&lt;<span class="name">setting</span> <span class="attr">name</span>=<span class="string">"mapUnderscoreToCamelCase"</span> <span class="attr">value</span>=<span class="string">"true"</span> /&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;/<span class="name">settings</span>&gt;</span>  </span><br><span class="line"><span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h3 id="springBoot项目配置"><a href="#springBoot项目配置" class="headerlink" title="springBoot项目配置"></a>springBoot项目配置</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">mybatis:</span><br><span class="line">  mapper-locations: classpath:mappers/*.xml</span><br><span class="line">  configuration:</span><br><span class="line">    map-underscore-to-camel-case: true</span><br><span class="line">    #或者</span><br><span class="line">    #mapUnderscoreToCamelCase: true</span><br><span class="line">    #设为true表示开启驼峰转换，两种配置方法都可以。但如果同时配置，</span><br><span class="line">    #前者mybatis.configuration.mapUnderscoreToCamelCase的优先级更高</span><br></pre></td></tr></table></figure>
-<p>我们通过上述配置后，如果数据库使用如book_name这样的命名方式，实体类采用驼峰命名。配置后无需写resultMap将数据库字段和实体类属性对应</p>
+<h2 id="String转List"><a href="#String转List" class="headerlink" title="String转List"></a>String转List<String></h2><h3 id="方式1-流的方式"><a href="#方式1-流的方式" class="headerlink" title="方式1: 流的方式"></a>方式1: 流的方式</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">String s=<span class="string">"monkeyzi,哈哈,学习java"</span>;</span><br><span class="line"> <span class="meta">@Test</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test3</span><span class="params">()</span></span>&#123;</span><br><span class="line">     List&lt;String&gt; strList=Arrays.stream(s.split(<span class="string">","</span>)).collect(Collectors.toList());</span><br><span class="line">     System.out.println(strList);<span class="comment">//[monkeyzi, 哈哈, 学习java]</span></span><br><span class="line"> &#125;</span><br><span class="line"> <span class="comment">//换个姿势再来一下</span></span><br><span class="line"> <span class="meta">@Test</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test4</span><span class="params">()</span></span>&#123;</span><br><span class="line">       List&lt;String&gt; strList=Arrays.asList(s.split(<span class="string">","</span>)).stream().collect(Collectors.toList());</span><br><span class="line">       System.out.println(strList);<span class="comment">//[monkeyzi, 哈哈, 学习java]</span></span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//我们可以再换个姿势</span></span><br><span class="line">  <span class="meta">@Test</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test5</span><span class="params">()</span></span>&#123;</span><br><span class="line">        List&lt;String&gt; strList=Stream.of(s.split(<span class="string">","</span>)).collect(Collectors.toList());</span><br><span class="line">        System.out.println(strList);<span class="comment">//[monkeyzi, 哈哈, 学习java]</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
       
       
@@ -339,13 +336,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/07/04/Mybatis字段映射-驼峰式命名/">Mybatis字段映射-驼峰式命名</a></p>
+        <p><span>本文标题:</span><a href="/2018/08/06/java8-List和逗号分割的字符串相互转换/">java8--List&lt;String&gt;和逗号分割的字符串相互转换</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 Dream Gao 的个人博客">Dream Gao</a></p>
-        <p><span>发布时间:</span>2018年07月04日 - 23时06分</p>
-        <p><span>最后更新:</span>2018年09月06日 - 21时05分</p>
+        <p><span>发布时间:</span>2018年08月06日 - 21时03分</p>
+        <p><span>最后更新:</span>2018年09月06日 - 21时47分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/07/04/Mybatis字段映射-驼峰式命名/" title="Mybatis字段映射-驼峰式命名">https://monkeyzi.github.io/2018/07/04/Mybatis字段映射-驼峰式命名/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://monkeyzi.github.io/2018/07/04/Mybatis字段映射-驼峰式命名/　　作者: Dream Gao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2018/08/06/java8-List和逗号分割的字符串相互转换/" title="java8--List&lt;String&gt;和逗号分割的字符串相互转换">https://monkeyzi.github.io/2018/08/06/java8-List和逗号分割的字符串相互转换/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://monkeyzi.github.io/2018/08/06/java8-List和逗号分割的字符串相互转换/　　作者: Dream Gao" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -358,15 +355,11 @@
 
 <nav id="article-nav">
   
-    <a href="/2018/07/05/mybatis批量查询,删除,更新/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          mybatis批量查询,删除,更新
-        
-      </div>
-    </a>
   
+    <a href="/2018/07/07/mysql和oracle下mybatis批量新增实现/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mysql和oracle下mybatis批量新增的实现</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
   
 </nav>
 
@@ -375,7 +368,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mybatis字段映射"><span class="toc-number">1.</span> <span class="toc-text">mybatis字段映射</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目中的应用配置-驼峰式"><span class="toc-number">2.</span> <span class="toc-text">项目中的应用配置(驼峰式)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#mybatis配置文件中添加配置"><span class="toc-number">2.1.</span> <span class="toc-text">mybatis配置文件中添加配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#springBoot项目配置"><span class="toc-number">2.2.</span> <span class="toc-text">springBoot项目配置</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#List转string"><span class="toc-number">1.</span> <span class="toc-text">List转string</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式1：String-join-函数"><span class="toc-number">1.1.</span> <span class="toc-text">方式1：String.join()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#方式2：流的方式"><span class="toc-number">1.2.</span> <span class="toc-text">方式2：流的方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String转List"><span class="toc-number">2.</span> <span class="toc-text">String转List</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#方式1-流的方式"><span class="toc-number">2.1.</span> <span class="toc-text">方式1: 流的方式</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -426,13 +419,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/07/05/mybatis批量查询,删除,更新/" title="上一篇: mybatis批量查询,删除,更新">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2018/07/07/mysql和oracle下mybatis批量新增实现/" title="下一篇: mysql和oracle下mybatis批量新增的实现">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
     <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/08/06/java8-List和逗号分割的字符串相互转换/">java8--List<String>和逗号分割的字符串相互转换</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/07/mysql和oracle下mybatis批量新增实现/">mysql和oracle下mybatis批量新增的实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/05/mybatis批量查询,删除,更新/">mybatis批量查询,删除,更新</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/07/04/Mybatis字段映射-驼峰式命名/">Mybatis字段映射-驼峰式命名</a></li></ul>
