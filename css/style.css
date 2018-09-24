@@ -354,7 +354,7 @@ a {
     border: none;
   }
   #container .article-more-link {
-    margin-top: 20px;
+    -margin-top: 5px;
     float: left;
   }
   #container #viewer-box .viewer-box-l {
@@ -3071,6 +3071,7 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-info-index.article-info {
   margin: 30px 30px 0 30px;
+  padding-bottom: 10px;
 }
 .article-info-post.article-info {
   padding: 0;
@@ -3209,7 +3210,7 @@ a.gitment-editor-footer-tip:hover {
   margin-right: 10px;
 }
 .article-more-link {
-  margin-top: 5px;
+  -margin-top: 5px;
   text-align: right;
 }
 .article-more-link a {
