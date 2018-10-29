@@ -3055,11 +3055,17 @@ a.gitment-editor-footer-tip:hover {
 }
 .article-inner {
   position: relative;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
   -padding-bottom: 20px;
   border-radius: 6px;
-  -webkit-box-shadow: 4px 4px 18px rgba(0,0,0,0.46);
-  box-shadow: 4px 4px 18px rgba(0,0,0,0.46);
+  -box-shadow: 4px 4px 18px rgba(0,0,0,0.46);
+  -webkit-box-shadow: 1px 1px 4px #c2bfbf;
+  box-shadow: 1px 1px 4px #c2bfbf;
+}
+.article-inner:hover {
+  -webkit-box-shadow: 4px 4px 18px #999;
+  box-shadow: 4px 4px 18px #999;
+  cursor: pointer;
 }
 .article-header {
   border-left: rgba(63,63,63,0) 5px solid;
